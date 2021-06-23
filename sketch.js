@@ -46,6 +46,16 @@ function draw() {
   background(bg);  
   Engine.update(myEngine);
 
+var collision = Matter.SAT.collides(boggie6.body,rock1.body)
+if (collision.collided){
+  flag=true
+}
+if(flag===true){
+  textSize(20)
+  text("CRASH",100,100)
+  crashSound.play()
+}
+
   boggie1.show();
   boggie2.show();
   boggie3.show();
@@ -62,5 +72,11 @@ function draw() {
   chain5.show();
   
   }
+  function keyPressed(){
+    if(keyCode == RIGHT_ARROW){
+      Matter.Body.applyForce(boggie6.body,boggie6.body.position,{x:0.5,y:0})
+    }
+  }
+ 
 
   
